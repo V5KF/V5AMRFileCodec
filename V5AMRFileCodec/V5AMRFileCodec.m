@@ -49,9 +49,9 @@ void SkipToPCMAudioData(FILE* fpwave)
 
 // 从WAVE文件读一个完整的PCM音频帧
 // 返回值: 0-错误 >0: 完整帧大小
-int ReadPCMFrame(short speech[], FILE* fpwave, int nChannels, int nBitsPerSample)
+size_t ReadPCMFrame(short speech[], FILE* fpwave, int nChannels, int nBitsPerSample)
 {
-	int nRead = 0;
+	size_t nRead = 0;
 	int x = 0, y=0;
 //	unsigned short ush1=0, ush2=0, ush=0;
 	
@@ -130,7 +130,8 @@ int V5EncodeWAVEFileToAMRFile(const char* pchWAVEFilename, const char* pchAMRFil
 	short speech[160];
 	
 	/* counters */
-	int byte_counter, frames = 0, bytes = 0;
+    int byte_counter, frames = 0;
+    size_t bytes = 0;
 	
 	/* pointer to encoder state structure */
 	void *enstate;

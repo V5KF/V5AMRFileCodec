@@ -61,7 +61,7 @@
         NSDate *date = [NSDate date];
         NSString *amrPath = [ViewController GetPathByFileName:self.recordFileName ofType:@"amr"];
         
-#warning wav转amr
+        // wav转amr
         if ([V5VoiceConverter ConvertWavToAmr:self.recordFilePath amrSavePath:amrPath]){
             
             //设置label信息
@@ -70,7 +70,7 @@
             date = [NSDate date];
             NSString *convertedPath = [ViewController GetPathByFileName:[self.recordFileName stringByAppendingString:@"_AmrToWav"] ofType:@"wav"];
             
-#warning amr转wav
+            // amr转wav
             if ([V5VoiceConverter ConvertAmrToWav:amrPath wavSavePath:convertedPath]){
                 //设置label信息
                 self.toWavLabel.text = [NSString stringWithFormat:@"amr转wav:\n%@",[self getVoiceFileInfoByPath:convertedPath convertTime:[[NSDate date] timeIntervalSinceDate:date]]];
